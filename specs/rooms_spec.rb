@@ -54,4 +54,14 @@ class TestRoom < Minitest::Test
     @room1.song_added_to_room(@song1)
     assert_equal(1, @room1.song_count)
   end
+
+  def test_room_at_capacity()
+    @room1.guest_enters_room(@guest1)
+    @room1.guest_enters_room(@guest2)
+    @room1.guest_enters_room(@guest3)
+    assert_equal(3, @room1.guest_count)
+    @room1.room_at_capacity()
+    assert_equal("At capacity, no entry!", @room1.room_at_capacity)
+  end
+
 end
